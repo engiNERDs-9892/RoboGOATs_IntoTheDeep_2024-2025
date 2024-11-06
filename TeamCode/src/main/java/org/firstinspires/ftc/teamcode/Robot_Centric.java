@@ -13,6 +13,8 @@ public class Robot_Centric extends LinearOpMode {
     private DcMotor motorFR;
     private DcMotor motorBL;
     private DcMotor motorBR;
+    private DcMotor motorFS;
+    private DcMotor motorTS;
 
 
 
@@ -22,6 +24,8 @@ public class Robot_Centric extends LinearOpMode {
         motorBL = hardwareMap.dcMotor.get("motorBL");
         motorFR = hardwareMap.dcMotor.get("motorFR");
         motorBR = hardwareMap.dcMotor.get("motorBR");
+        motorFS = hardwareMap.dcMotor.get("motorFS");
+        motorTS = hardwareMap.dcMotor.get("motorTS");
 
 
 
@@ -29,11 +33,16 @@ public class Robot_Centric extends LinearOpMode {
         motorBL.setPower(0);
         motorFR.setPower(0);
         motorBR.setPower(0);
+        motorFS.setPower(0);
+        motorTS.setPower(0);
+
 
         motorFL.setDirection(DcMotor.Direction.REVERSE);
         motorFR.setDirection(DcMotor.Direction.FORWARD);
         motorBR.setDirection(DcMotor.Direction.FORWARD);
         motorBL.setDirection(DcMotor.Direction.REVERSE);
+        motorFS.setDirection(DcMotor.Direction.REVERSE);
+        motorTS.setDirection(DcMotor.Direction.FORWARD);
 
 
         // Wait for the game to start (driver presses PLAY)
@@ -98,6 +107,11 @@ public class Robot_Centric extends LinearOpMode {
                 motorFR.setPower(.8 * rightFrontPower);
                 motorBR.setPower(.8 * rightBackPower);
             }
+            double FSpower = gamepad2.right_stick_x;
+            double TSpower = gamepad2.left_stick_y;
+
+            motorFS.setPower(FSpower * .5);
+            motorTS.setPower(TSpower * .5);
 
         }
     }
