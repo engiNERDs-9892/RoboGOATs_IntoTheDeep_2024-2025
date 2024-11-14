@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
@@ -13,8 +12,11 @@ public class Robot_Centric extends LinearOpMode {
     private DcMotor motorFR;
     private DcMotor motorBL;
     private DcMotor motorBR;
-    private DcMotor motorFS;
-    private DcMotor motorTS;
+    private DcMotor motorHS;
+    private DcMotor motorVS;
+    private Servo servoArm;
+    private Servo servoIn;
+    private Servo servoBucket;
 
 
 
@@ -24,25 +26,28 @@ public class Robot_Centric extends LinearOpMode {
         motorBL = hardwareMap.dcMotor.get("motorBL");
         motorFR = hardwareMap.dcMotor.get("motorFR");
         motorBR = hardwareMap.dcMotor.get("motorBR");
-        motorFS = hardwareMap.dcMotor.get("motorFS");
-        motorTS = hardwareMap.dcMotor.get("motorTS");
-
+        motorHS = hardwareMap.dcMotor.get("motorHS");
+        motorVS = hardwareMap.dcMotor.get("motorVS");
+        servoArm = hardwareMap.servo.get("servoArm");
+        servoIn = hardwareMap.servo.get("servoIn");
+        servoBucket = hardwareMap.servo.get("servoBucket");
 
 
         motorFL.setPower(0);
         motorBL.setPower(0);
         motorFR.setPower(0);
         motorBR.setPower(0);
-        motorFS.setPower(0);
-        motorTS.setPower(0);
-
+        motorHS.setPower(0);
+        motorVS.setPower(0);
+        servoArm.setPosition(.5);
+        servoBucket.setPosition(.3);
 
         motorFL.setDirection(DcMotor.Direction.REVERSE);
         motorFR.setDirection(DcMotor.Direction.FORWARD);
         motorBR.setDirection(DcMotor.Direction.FORWARD);
         motorBL.setDirection(DcMotor.Direction.REVERSE);
-        motorFS.setDirection(DcMotor.Direction.REVERSE);
-        motorTS.setDirection(DcMotor.Direction.FORWARD);
+        motorHS.setDirection(DcMotor.Direction.REVERSE);
+        motorVS.setDirection(DcMotor.Direction.FORWARD);
 
 
         // Wait for the game to start (driver presses PLAY)
@@ -107,11 +112,34 @@ public class Robot_Centric extends LinearOpMode {
                 motorFR.setPower(.8 * rightFrontPower);
                 motorBR.setPower(.8 * rightBackPower);
             }
-            double FSpower = gamepad2.right_stick_x;
-            double TSpower = gamepad2.left_stick_y;
+            double HSpower = gamepad2.right_stick_y;
+            double VSpower = gamepad2.left_stick_y;
 
-            motorFS.setPower(FSpower * .5);
-            motorTS.setPower(TSpower * .5);
+            motorHS.setPower(HSpower * -.5);
+            motorVS.setPower(VSpower * .5);
+
+            if(gamepad2.x){
+                servoBucket.setPosition(.3);
+            }
+            if(gamepad2.b){
+                servoBucket.setPosition(0);
+            }
+            if(gamepad2.dpad_right){
+                servoArm.setPosition(0);
+            }
+            if(gamepad2.dpad_up){
+                servoArm.setPosition(.1);
+            }
+            if(gamepad2.dpad_left){
+                servoArm.setPosition(.5);
+            }
+            if(gamepad2.right_bumper){
+                servoIn.setPosition(1);
+            } else if(gamepad2.left_bumper){
+                servoIn.setPosition(.4);
+            } else {
+                servoIn.setPosition(0.5);
+            }
 
         }
     }
