@@ -39,7 +39,7 @@ public class Robot_Centric extends LinearOpMode {
         motorBR.setPower(0);
         motorHS.setPower(0);
         motorVS.setPower(0);
-        servoArm.setPosition(.5);
+        servoArm.setPosition(.55);
         servoBucket.setPosition(.3);
 
         motorFL.setDirection(DcMotor.Direction.REVERSE);
@@ -92,6 +92,7 @@ public class Robot_Centric extends LinearOpMode {
             // Show the elapsed game time and wheel power.
             telemetry.addData("Front left/Right", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
             telemetry.addData("Back  left/Right", "%4.2f, %4.2f", leftBackPower, rightBackPower);
+            telemetry.addData("Lift", motorVS.getCurrentPosition());
             telemetry.update();
 
             if (gamepad1.left_trigger != 0) {
@@ -128,10 +129,10 @@ public class Robot_Centric extends LinearOpMode {
                 servoArm.setPosition(0);
             }
             if(gamepad2.dpad_up){
-                servoArm.setPosition(.1);
+                servoArm.setPosition(.2);
             }
             if(gamepad2.dpad_left){
-                servoArm.setPosition(.5);
+                servoArm.setPosition(.55);
             }
             if(gamepad2.right_bumper){
                 servoIn.setPosition(1);
