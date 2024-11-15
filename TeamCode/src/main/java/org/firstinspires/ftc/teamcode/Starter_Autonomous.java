@@ -43,6 +43,8 @@ public class Starter_Autonomous extends LinearOpMode {
         servoArm.setPosition(.55);
         servoBucket.setPosition(.3);
 
+        //"foot" tis was typeth via foot
+
         motorFL.setDirection(DcMotor.Direction.REVERSE);
         motorFR.setDirection(DcMotor.Direction.FORWARD);
         motorBR.setDirection(DcMotor.Direction.FORWARD);
@@ -62,10 +64,11 @@ public class Starter_Autonomous extends LinearOpMode {
         servoBucket.setPosition(0);
         sleep(1000);
         Move(directions.FORWARDS,10,.5);
-        Move(directions.COUNTERCLOCKWISE,5,.5);
-        Move(directions.FORWARDS,46,.5);
-        Move(directions.COUNTERCLOCKWISE,20,.5);
-        Move(directions.BACKWARDS,10,.4);
+        Move(directions.CLOCKWISE,10,.5);
+        Move(directions.FORWARDS,90,.5);
+        servoBucket.setPosition(.3);
+        VS_Up(.5,2000);
+
 
 
 
