@@ -63,12 +63,13 @@ public class Starter_Autonomous extends LinearOpMode {
         VS_Up(.5,-2000);
         servoBucket.setPosition(0);
         sleep(1000);
-        Move(directions.FORWARDS,10,.5);
+        Move(directions.FORWARDS,20,.5);
         Move(directions.CLOCKWISE,10,.5);
-        Move(directions.FORWARDS,90,.5);
+        Move(directions.FORWARDS,100,.5);
+        Move(directions.LEFT,25,.5);
         servoBucket.setPosition(.3);
         VS_Up(.5,2000);
-
+//no, please don't pour coffee on meeee
 
 
 
