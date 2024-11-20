@@ -39,7 +39,7 @@ public class Robot_Centric extends LinearOpMode {
         motorBR.setPower(0);
         motorHS.setPower(0);
         motorVS.setPower(0);
-        servoArm.setPosition(.55);
+        servoArm.setPosition(.53);
         servoBucket.setPosition(.3);
 
         motorFL.setDirection(DcMotor.Direction.REVERSE);
@@ -48,6 +48,8 @@ public class Robot_Centric extends LinearOpMode {
         motorBL.setDirection(DcMotor.Direction.REVERSE);
         motorHS.setDirection(DcMotor.Direction.REVERSE);
         motorVS.setDirection(DcMotor.Direction.FORWARD);
+
+
 
 
         // Wait for the game to start (driver presses PLAY)
@@ -95,13 +97,13 @@ public class Robot_Centric extends LinearOpMode {
             telemetry.addData("Lift", motorVS.getCurrentPosition());
             telemetry.update();
 
-            if (gamepad1.left_trigger != 0) {
+            if (gamepad1.right_trigger != 0) {
                 motorFL.setPower(.3 * leftFrontPower);
                 motorBL.setPower(.3 * leftBackPower);
                 motorFR.setPower(.3 * rightFrontPower);
                 motorBR.setPower(.3 * rightBackPower);
 
-            }   else if (gamepad1.right_trigger != 0) {
+            }   else if (gamepad1.left_trigger != 0) {
                 motorFL.setPower(1 * leftFrontPower);
                 motorBL.setPower(1 * leftBackPower);
                 motorFR.setPower(1 * rightFrontPower);
@@ -119,7 +121,7 @@ public class Robot_Centric extends LinearOpMode {
             motorHS.setPower(HSpower * -.5);
             motorVS.setPower(VSpower * .5);
 
-            if(gamepad2.x){
+             if(gamepad2.x){
                 servoBucket.setPosition(.3);
             }
             if(gamepad2.b){
@@ -132,7 +134,7 @@ public class Robot_Centric extends LinearOpMode {
                 servoArm.setPosition(.2);
             }
             if(gamepad2.dpad_left){
-                servoArm.setPosition(.55);
+                servoArm.setPosition(.53);
             }
             if(gamepad2.right_bumper){
                 servoIn.setPosition(1);

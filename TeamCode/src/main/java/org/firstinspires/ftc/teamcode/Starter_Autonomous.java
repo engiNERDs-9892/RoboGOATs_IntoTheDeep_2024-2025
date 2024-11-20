@@ -40,7 +40,7 @@ public class Starter_Autonomous extends LinearOpMode {
         motorBR.setPower(0);
         motorHS.setPower(0);
         motorVS.setPower(0);
-        servoArm.setPosition(.55);
+        servoArm.setPosition(.53);
         servoBucket.setPosition(.3);
 
         //"foot" tis was typeth via foot
