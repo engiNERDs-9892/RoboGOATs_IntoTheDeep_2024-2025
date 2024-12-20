@@ -55,21 +55,53 @@ public class Starter_Autonomous extends LinearOpMode {
         motorVS.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
 
+        motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        Move(directions.FORWARDS,5,.5);
-        Move(directions.RIGHT,50,.5);
+
+
+        Move(directions.FORWARDS,9,.8);
+        Move(directions.LEFT,48,.8);
         Move(directions.CLOCKWISE,10,.4);
+        Move(directions.BACKWARDS,4,.5);
         HS_Out(.4,200);
-        VS_Up(.5,-2000);
+        VS_Up(1,-5500);
+        sleep(1000);
         servoBucket.setPosition(0);
         sleep(1000);
-        Move(directions.FORWARDS,20,.5);
-        Move(directions.CLOCKWISE,10,.5);
-        Move(directions.FORWARDS,95,.5);
-        Move(directions.LEFT,25,.5);
         servoBucket.setPosition(.3);
-        VS_Up(.5,2000);
-//no, please don't pour coffee on meeee
+        VS_Up(1,0);
+        HS_Out(-.4,200);
+        Move(directions.FORWARDS,24,.8);
+        Move(directions.COUNTERCLOCKWISE,33,.8);
+        Move(directions.RIGHT,25,.6);
+        Move(directions.FORWARDS, 10, .3);
+        Move(directions.BACKWARDS, 9, .8);
+        servoArm.setPosition(.3);
+        servoIn.setPosition(-1);
+        HS_Out(.5,1800);
+        servoIn.setPosition(.5);
+        sleep(200);
+        servoIn.setPosition(-1);
+        sleep(200);
+        HS_Out(-.5,1800);
+        servoIn.setPosition(.5);
+        servoArm.setPosition(.2);
+        Move(directions.LEFT,25,.8);
+        Move(directions.CLOCKWISE,33,.8);
+        Move(directions.BACKWARDS,17,.8);
+        servoArm.setPosition(.53);
+        servoIn.setPosition(.6);
+        sleep(1000);
+        VS_Up(1,-5500);
+        servoIn.setPosition(.5);
+        servoBucket.setPosition(0);
+
+
+        //no, please don't pour coffee on meeee
+        //coffee craft
 
 
 
@@ -120,7 +152,7 @@ public class Starter_Autonomous extends LinearOpMode {
         }
 
         // Sets the motor direction to move to the Left ( Note * Port = Left)
-        else if (direction == directions.LEFT) {
+        else if (direction == directions.RIGHT) {
             motorFL.setDirection(DcMotor.Direction.REVERSE);
             motorFR.setDirection(DcMotor.Direction.REVERSE);
             motorBL.setDirection(DcMotor.Direction.FORWARD);
@@ -128,7 +160,7 @@ public class Starter_Autonomous extends LinearOpMode {
         }
 
         // Sets the motor direction to move to the Right (Note * Starboard = Right)
-        else if (direction == directions.RIGHT) {
+        else if (direction == directions.LEFT) {
             motorFL.setDirection(DcMotor.Direction.FORWARD);
             motorFR.setDirection(DcMotor.Direction.FORWARD);
             motorBL.setDirection(DcMotor.Direction.REVERSE);

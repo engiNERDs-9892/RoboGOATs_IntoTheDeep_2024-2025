@@ -44,9 +44,9 @@ public class PinpointLocalizer implements Localizer {
 
         odo = hardwareMap.get(GoBildaPinpointDriver.class,"odo");
         odo.setOffsets(-69, 187);
-        odo.setOffsets(-165.1, 82.6);//-6 14
+        odo.setOffsets(165.1, 88.9);//-6 14
         odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
-        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.FORWARD, GoBildaPinpointDriver.EncoderDirection.FORWARD);
+        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.REVERSED, GoBildaPinpointDriver.EncoderDirection.FORWARD);
         odo.resetPosAndIMU();
         // TODO: reverse any encoders using Encoder.setDirection(Encoder.Direction.REVERSE)
 
